@@ -27,15 +27,15 @@ class RingBuffer:
         return f"RingBuffer({self.buffer})"
 
 # Function to send CAN message for acceleration control
-def send_acceleration_message(bus, arbitration_id, data):
+def send_Canvect_message(bus, arbitration_id, data):
     message = can.Message(arbitration_id=arbitration_id, data=data, is_extended_id=False)
     try:
         bus.send(message)
-        print(f"Acceleration Message sent: ID=0x{arbitration_id:X}, Data: {' '.join(f'{byte:02X}' for byte in data)}")
+        print(f"CAN Message sent: ID=0x{arbitration_id:X}, Data: {' '.join(f'{byte:02X}' for byte in data)}")
     except can.CanError as e:
         print(f"Message not sent: {e}")
 
-def continuous_acceleration_send(arbitration_id, seventh_byte, channel, interface, bitrate, data_accel, sleep_time):
+def continuous_Canvect_message(arbitration_id, seventh_byte, channel, interface, bitrate, data_accel, sleep_time, buffer_capacity):
     # Initialize CAN bus
     try:
         bus = can.interface.Bus(channel=channel, interface=interface, bitrate=bitrate)
@@ -44,7 +44,7 @@ def continuous_acceleration_send(arbitration_id, seventh_byte, channel, interfac
         return
 
     # Create a ring buffer to store acceleration messages
-    acc_buffer = RingBuffer(capacity=10)
+    acc_buffer = RingBuffer(capacity=buffer_capacity)
 
     try:
         while True:
@@ -58,7 +58,7 @@ def continuous_acceleration_send(arbitration_id, seventh_byte, channel, interfac
             acc_buffer.append(data_accel)
 
             # Send the CAN message for vehicle speed control
-            send_acceleration_message(bus, arbitration_id, data_accel)
+            send_Canvect_message(bus, arbitration_id, data_accel)
 
             # Optional: Print current buffer contents (for debugging)
             print("Current Buffer State:", acc_buffer)
@@ -78,6 +78,9 @@ if __name__ == "__main__":
     interface = input("Enter CAN interface (e.g., 'pcan'): ")
     bitrate = int(input("Enter bitrate (e.g., 500000): "))
     
+    # User specifies ring buffer capacity
+    buffer_capacity = int(input("Enter ring buffer capacity: "))
+    
     # User specifies data_accel
     data_accel = [
         int(input("Enter Byte 0: ")),
@@ -93,12 +96,13 @@ if __name__ == "__main__":
     sleep_time = float(input("Enter sleep time (in seconds): "))
 
     # Start sending CAN frames
-    continuous_acceleration_send(
+    continuous_Canvect_message(
         arbitration_id=arbitration_id,
         seventh_byte=seventh_byte,
         channel=channel,
         interface=interface,
         bitrate=bitrate,
         data_accel=data_accel,
-        sleep_time=sleep_time
+        sleep_time=sleep_time,
+        buffer_capacity=buffer_capacity
     )
