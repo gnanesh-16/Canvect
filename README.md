@@ -26,7 +26,7 @@ pip install canvect==0.1.4
 1. You can now easily modify parameters like arbitration_id, bitrate, and channel to suit your specific needs:ds
 
 ```bash 
-from my_can_package import continuous_acceleration_send
+from Canvect import continuous_acceleration_send
 
 continuous_acceleration_send(
     arbitration_id=int(input("Enter arbitration ID (hex): "), 16),  # Custom CAN ID
@@ -66,7 +66,7 @@ Note: Here refers to above example
 
 
 ```bash 
-from my_can_package import CANBusHandler, send_Canvect_message
+from Canvect import CANBusHandler, send_Canvect_message
 
 # Initialize CAN bus
 bus_handler = CANBusHandler(channel='PCAN_USBBUS2', interface='pcan', bitrate=500000)
