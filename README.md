@@ -1,4 +1,5 @@
-[![Downloads](https://static.pepy.tech/badge/canvect)](https://pepy.tech/project/canvect)   [![Downloads](https://static.pepy.tech/badge/canvect/month)](https://pepy.tech/project/canvect)   [![Downloads](https://static.pepy.tech/badge/canvect/week)](https://pepy.tech/project/canvect)
+[![Downloads](https://static.pepy.tech/badge/canvect)](https://pepy.tech/project/canvect)   [![Downloads](https://static.pepy.tech/badge/canvect/month)](https://pepy.tech/project/canvect)   [![Downloads](https://static.pepy.tech/badge/canvect/week)](https://pepy.tech/project/canvect)  
+   
 # Canvect v0.1.4 Release Notes
 
 # Overiew
