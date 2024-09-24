@@ -5,6 +5,28 @@
 # Overiew
 So, this is the newr version add on's to that Canvect is a Python package designed for sending and managing CAN (Controller Area Network) messages related to acceleration control. It provides a simple yet flexible API for creating and dispatching CAN messages, making it ideal for applications in automotive and industrial systems where CAN communication is essential.
 
+## Contributing
+
+We welcome contributions to the `canvect` project! To get started:
+
+1. **Fork the repository**
+2. **Clone your fork**
+   ```bash
+   git clone https://github.com/your-username/canvect.git
+   ```
+3 **Clone your fork**
+```bash
+git checkout -b feature/your-feature
+```
+4 **Make your changes and commit them*
+```bash
+git commit -m "Add a new feature"
+```
+5. **Push to your fork **
+```bash
+git push origin feature/your-feature
+
+```
 # New Features
 1. Dynamic Parameter Input: Users can now input dynamic parameters for the following
 
